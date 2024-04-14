@@ -1,11 +1,11 @@
 import Redirection from "../../atoms/Redirection/Redirection"
 import Image from "../../atoms/Image/Image"
-import './Header.css'
 import logo from "../../../assets/images/wave3.png"
+import './Header.css'
 function Header(){
 
-    let about = "About"
-    let loan = "Loan"
+    let Home = "Home"
+    let about = "About Blockchain"
     let login = "Login"
     let signup = "Signup"
 
@@ -15,9 +15,8 @@ function Header(){
         <Image src={logo}></Image>
         </div>
         <div className="header-links">
+        <Redirection to={"/"} className="redirection-base-config">{Home}</Redirection>
         <Redirection to={"/about"} className="redirection-base-config">{about}</Redirection>
-        <Redirection to={"/loan"} className="redirection-base-config">{loan}</Redirection>
-        <Redirection to={"/login"} className="redirection-base-config">{login}</Redirection>
         <Redirection to={"/login"} className="redirection-base-config">{login}</Redirection>
         <Redirection to={"/signup"} className="redirection-signup-link">{signup}</Redirection>
         </div>

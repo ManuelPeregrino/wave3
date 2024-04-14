@@ -1,6 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Outfit:wght@100..900&display=swap');
+
+
 .landing-div-root{
     display: flex;
     flex-direction:column ;
-    height: 70vh;
+    height:100vh;
+    background-color: #F5F7F9;
 
 }
+

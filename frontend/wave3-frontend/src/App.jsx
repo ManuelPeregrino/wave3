@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react'; // Correct import; remove handleClick
 import {Route, Routes} from "react-router-dom"
 import Landing from "./components/pages/Landing"
