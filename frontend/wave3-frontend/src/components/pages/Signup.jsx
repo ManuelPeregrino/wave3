@@ -26,7 +26,7 @@ function Login() {
         try {
             const response = await api.post('/api/users', data);
             console.log('Solicitud exitosa:', response.data);
-            alert("Tu wallet es" + data.walletaddress)
+            alert("Tu wallet es " + response.data.user.walletaddress)
             // Aquí puedes realizar la navegación si el inicio de sesión es exitoso
             // navigate('/');
         } catch (error) {
