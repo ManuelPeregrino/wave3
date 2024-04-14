@@ -1,0 +1,9 @@
+@font-face {
+    font-family: "Outfit", sans-serif;
+
+    src: url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Outfit:wght@100..900&display=swap");
+}
+button{
+    border-radius: 20px;
+    font: "Outfit";
+}
