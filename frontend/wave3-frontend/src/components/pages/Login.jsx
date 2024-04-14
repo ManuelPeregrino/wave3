@@ -1,85 +1,86 @@
-// eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import InputField from '../molecules/InputField/InputField'; // Assuming InputField contains Text and Input
 import Text from '../atoms/Text/Text';
-import Link from '../atoms/Redirection/Redirection'; // Make sure to create this atom if it doesn't exist yet
-import '../../assets/styles/Login.css';
 import Redirection from '../atoms/Redirection/Redirection';
-
+import api from '../../util/wave3api';
+import '../../assets/styles/Login.css';
 
 function Login() {
+    const navigate = useNavigate();
     
-    // form data state
-    const [formData, setFormData] = useState({
-        username: '',
-        password: '',
-        rememberMe: false,
-    });
-    
-    // handle form field changes
-    const handleChange = (e) => {
-        const { name, value, type, checked } = e.target;
-        const newValue = type === 'checkbox' ? checked : value;
-        setFormData(prevState => ({
-            ...prevState,
-            [name]: newValue
-        }));
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleSubmit = async () => {
+        console.log(email);
+        console.log(password);
+
+        const data = {
+            email: email, // Usar el estado email actual
+            password: password // Usar el estado password actual
+        };
+
+        console.log(data)
+
+        try {
+            const response = await api.post('/api/users/login', data);
+            console.log('Solicitud exitosa:', response.data);
+            // Aquí puedes realizar la navegación si el inicio de sesión es exitoso
+            navigate('/dashboard');
+        } catch (error) {
+            alert("Ingrese datos correctos")
+        }
     };
-    
-    // handle form submission
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Handle form submission logic here
-        console.log(formData);
-    };
-    
-    const userlabel = "Email"
-    const passlabel = "Password"
-    const loginlabel = "Login"
+
+    const userLabel = "Email";
+    const passLabel = "Password";
+    const loginLabel = "Login";
+
     return (
         <div className='backgroundgeneral'>
-            <form className='form-background' onSubmit={handleSubmit}>
-            <Text>{loginlabel}</Text>
+            <div className='form-background'>
+                <Text>{loginLabel}</Text>
                 <div className='form-input'>
-                <Text className='field'>{userlabel}</Text>
-                <InputField  
-                    inputType="email" // Using email type for proper validation
-                    placeholder="Enter your email" 
-                    value={formData.username} 
-                    onChange={handleChange} 
-                    name="username"
-                    className='field'
-                />
+                    <Text className='field'>{userLabel}</Text>
+                    <InputField  
+                        inputType="text" // Usando el tipo de entrada "text" para la validación adecuada
+                        placeholder="Enter your email" 
+                        value={email} 
+                        onChange={e => setEmail(e.target.value)} // Actualizar el estado del email
+                        name="email"
+                        className='field'
+                    />
                 </div>
                 <div className='form-input'>
-                <Text className='field'>{passlabel}</Text>
-                <InputField 
-                    inputType="password" 
-                    placeholder="Enter your password" 
-                    value={formData.password} 
-                    onChange={handleChange} 
-                    name="password"
-                    className='field'
-                />
+                    <Text className='field'>{passLabel}</Text>
+                    <InputField 
+                        inputType="password" 
+                        placeholder="Enter your password" 
+                        value={password} 
+                        onChange={e => setPassword(e.target.value)} // Actualizar el estado de la contraseña
+                        name="password"
+                        className='field'
+                    />
                 </div>
                 <div className='form-checkbox'>
                     <div>
-                    <input 
-                        type="checkbox" 
-                        id="remember-me" 
-                        name="rememberMe"
-                        checked={formData.rememberMe} 
-                        onChange={handleChange}
-                    />
-                    <label htmlFor="remember-me" className='form-remember'>Remember me</label>
+                        <input 
+                            type="checkbox" 
+                            id="remember-me" 
+                            name="rememberMe"
+                            // checked={formData.rememberMe}
+                            // onChange={handleChange}
+                        />
+                        <label htmlFor="remember-me" className='form-remember'>Remember me</label>
                     </div>
                     <Redirection to="/forgot-password" className='form-recover'>Forget Password?</Redirection>
                 </div>
-                <button type="submit" className='form-submit'>Submit</button>
+                <button onClick={handleSubmit} className='form-submit'>Submit</button>
                 <div className='form-footer'>
-                    <Text>Don’t have an account? <Link to="/signup" className='signup-link'>Sign Up</Link></Text>
+                    <Text>Don’t have an account? <Redirection to="/signup" className='signup-link'>Sign Up</Redirection></Text>
                 </div>
-            </form>
+            </div>
         </div>
     );
 }

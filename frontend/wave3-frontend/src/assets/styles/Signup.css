@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..400&display=swap');
+
+.backgroundgeneral{
+    width: 100vw;
+    height: 100vh;
+    background-color: #DFDFDF;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    text-decoration: none;
+    font-family: "Outfit", sans-serif;
+}
+
+.form-background{
+    background-color: #ffffff;
+    width: 40vw;
+    height: 75vh;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.form-input{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+
+.field{
+    align-self: center;
+    width: 80%;
+}
+
+.field input{
+    background-color: #DFDFDF;
+    height: 5vh;
+    text-decoration: none;
+    border-radius: 10px;
+}
+
+.form-input-field{
+    width: 100%;
+}
+
+.form-checkbox{
+    width: 100%;
+    height: 5%;
+    justify-content: space-around;
+    display: flex;
+}
+.form-submit{
+    background-color: black;
+    color: #DFDFDF;
+    height: 5vh;
+    width: 80%;
+    text-decoration: none;
+    border-radius: 10px;
+    font-family: "Outfit", sans-serif;
+    font-size: 1.2rem;
+}
+.form-footer{
+    width: 80%;
+}

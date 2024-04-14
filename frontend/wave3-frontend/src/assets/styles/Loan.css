@@ -1,0 +1,33 @@
+.cards{
+    height: 75vh;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    justify-content: space-evenly;
+}
+
+.card{
+    width: 28%;
+    background-color: #ffffff;
+    height: 50%;
+    align-self: center;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.background{
+    height: 100vh;
+    width: 100vw;
+    background-color: #F5F7F9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    margin: 0;
+}
+
+.cardsbackground{
+    
+}
